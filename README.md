@@ -32,7 +32,7 @@ Retaurant Website/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-github-username/restaurant-website
+   git clone https://github.com/manooo-arch/hotel-website
    ```
 
 2. Open the folder:
