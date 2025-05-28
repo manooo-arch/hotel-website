@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+
+    <!-- Boostrap 5 CSS Stylesheet Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+     <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <!-- Gogole Font CDN Link -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;500;700&display=swap" rel="stylesheet">
+
+      <!-- AOS CSS -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+      <style>
+    :root {
+      --primary: #F26E38;
+      --dark: #1E1E1E;
+      --light: #F8F9FA;
+      --gray: #6C757D;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background-color: #fff;
+      position: relative;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'David Libre', serif;
+      font-weight: 700;
+    }
+    
+    .bg-light-gray {
+      background-color: #f8f9fa;
+    }
+    
+    /* Navbar */
+    .navbar {
+      padding: 20px 0;
+    }
+    
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+    }
+    
+    .navbar-brand img {
+      margin-right: 10px;
+    }
+    
+    .nav-link {
+      color: var(--dark);
+      font-weight: 500;
+      margin: 0 15px;
+    }
+    
+    .btn {
+        border-radius: 17px 5px;
+        padding: 10px 20px;
+        background-color:#EA6D27;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-family: 'David Libre', serif;
+        font-size: 17px;
+        word-spacing: 1.5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(140, 140, 140, 0.3);
+        background-color: #e05e2a;
+        border-color: #e05e2a;
+        color: #fff;
+    }
+
+    .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-family: 'David Libre', serif;
+            font-size: 64px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            line-height: 1.15;
+        }
+        
+        .hero-content p {
+          color: #5C6574;
+          line-height: 25px;
+          margin-bottom: 2rem;
+          max-width: 85%;
+        }
+        
+        .btn-menu {
+            background-color: #1a1a1a;
+            border-radius: 17px 5px;
+            padding: 10px 20px;
+            border-radius: 17px 5px;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-family: 'David Libre', serif;
+            font-size: 17px;
+            word-spacing: 1.5px;
+            display: inline-block;
+            margin-right: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-menu:hover {
+            background-color: #000000;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(140, 140, 140, 0.3);
+        }
+        
+        .btn-book {
+            background-color: #EA6D27;
+            border-radius: 17px 5px;
+            padding: 10px 20px;
+            border-radius: 17px 5px;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-family: 'David Libre', serif;
+            font-size: 17px;
+            word-spacing: 1.5px;
+            display: inline-block;
+            margin-right: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-book:hover{
+            background-color: #e05e2a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(140, 140, 140, 0.3);
+        }
+
+
+        .social-icons {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            color: #6c757d; /* Adjusted to a lighter gray for better visibility */
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #33373b; /* Adjusted to match the lighter gray */
+            color:#3b3b3b; /* Adjusted to match the lighter gray */
+            margin-right: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background-color: #6c757d; /* Adjusted hover background for better contrast */
+            color: #fff; /* White color for better visibility on hover */
+        }
+        
+        .social-icons::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 1px;
+            background-color: #aeaeae;
+            margin-left: 1rem;
+        }
+        
+        .image-container {
+            position: relative;
+            height: 100%;
+        }
+        
+        .restaurant-image {
+            width: 450px;
+            height: 530px;
+            border-radius: 30px 10px;
+            overflow: hidden;
+        }
+        
+        .food-image {
+            position: absolute;
+            bottom: 10%;
+            left: -15%;
+            width: 50%;
+            border-radius: 50%;
+        }
+        
+        .leaf-decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 1;
+        }
+        
+        .leaf-1 {
+            top: -40px;
+            left: 550px;
+            right: 5%;
+            width: 150px;
+            height: 150px; 
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1; /* Send it behind other elements */
+            transform: rotate(0deg);
+        }
+        
+        .leaf-2 {
+            bottom: 70%;
+            right: 6%;
+            width: 230px;
+        }
+        
+        .leaf-3 {
+            top: 65%;
+            right: 5%;
+            width: 150px;
+            rotate: 10deg;
+        }
+
+        
+        @media (max-width: 991.98px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .food-image {
+                width: 40%;
+                left: 0;
+            }
+            
+            .image-wrapper {
+                margin-top: 3rem;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+            
+            .hero-content {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+            
+            .hero-content p {
+                max-width: 100%;
+            }
+            
+            .social-icons {
+                justify-content: center;
+                margin-top: 2rem;
+            }
+            
+            .social-icons::after {
+                display: none;
+            }
+            
+            .food-image {
+                position: relative;
+                width: 60%;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-top: -20%;
+                margin-bottom: 2rem;
+            }
+            
+            .image-wrapper {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        }
+
+                  /* Section title styling */
+          .special-dishes {
+              background-color: #f3f4f4;
+              margin-top: 70px;
+              padding: 5rem 0;
+              position: relative;
+          }
+
+          .section-title {
+              font-family: 'David Libre', serif;
+              font-weight: 700;
+              font-size: 3rem;
+              color: var(--primary-color);
+              margin-bottom: 1rem;
+          }
+
+          .section-description {
+              color: var(--text-color);
+              font-size: 1rem;
+              line-height: 1.6;
+              max-width: 600px;
+              margin: 0 auto;
+          }
+
+          /* Decorative leaves */
+          .leaf {
+              position: absolute;
+              width: 200px;
+              height: 200px;
+              background-size: contain;
+              background-repeat: no-repeat;
+              opacity: 0.1;
+              z-index: -1;
+          }
+
+            .leaf-left {
+                top: 50%;
+                left: -20px;
+                transform: translateY(-70%) rotate(0deg);
+                opacity: 0.4;
+                z-index: 0;
+            }
+
+          .leaf-right {
+              top: -30px;
+              right: 40px;
+              opacity: 0.5;
+              z-index: 1; 
+              transform: rotate(-15deg);
+          }
+
+          /* Dish card styling */
+          .dish-card-1 {
+            background-color: #fdfdfd;
+              padding: 1rem;
+              transition: transform 0.3s ease;
+              border-radius: 50px 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+
+          .dish-card-1:hover {
+              transform: translateY(-10px);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+              cursor: pointer;
+          }
+
+          .dish-card {
+            background-color: #f3f4f4;
+            border: 2px solid #ffffff;
+              padding: 1rem;
+              transition: transform 0.3s ease;
+              border-radius: 50px 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+
+          .dish-card:hover {
+              transform: translateY(-10px);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+              cursor: pointer;
+          }
+
+          .dish-image-container {
+              position: relative;
+              width: 100%;
+              padding-bottom: 100%; /* Creates a 1:1 aspect ratio */
+              overflow: hidden;
+              border-radius: 50%;
+          }
+
+          .dish-image {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              z-index: 5;
+          }
+
+            .price-tag {
+              position: absolute;
+              top: 50%; /* Center vertically */
+              right: 10px; /* Position near the right edge */
+              transform: translateY(-50%); /* Center alignment */
+              font-size: 0.9rem;
+              background-color: var(--primary);
+              color: white;
+              width: 45px;
+              height: 45px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-weight: 600;
+              box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+              z-index: 100; /* Increased z-index for higher priority */
+            }
+
+          .dish-title {
+              font-family: 'David Libre', serif;
+              font-weight: 700;
+              font-size: 1.27rem;
+              color: var(--primary-color);
+              margin-bottom: 1.5rem;
+              line-height: 26px;
+              
+          }
+
+          .dish-description {
+              color: #5C6574;
+              font-size: 0.9rem;
+              line-height: 1.5;
+          }
+
+          /* Decorative elements at the bottom */
+          .decorative-elements {
+              position: relative;
+              height: 100px;
+              margin-top: 2rem;
+          }
+
+            .dish-pattern {
+              position: absolute;
+              bottom: 60%;
+              right: 65%;
+              width: 200px;
+              height: 130px;
+              background-size: contain;
+              transform: rotate(-10deg);
+              opacity: 1.5;
+              z-index: 1; /* Ensures it stays behind the dish card-1 container */
+            }
+
+            .flwr {
+              position: absolute;
+              bottom: -20%;
+              right: -150%;
+              width: 260px;
+              height: 150px;
+              background-size: contain;
+              transform: translateY(100%) rotate(10deg);
+              opacity: 1.2;
+              z-index: 1; /* Ensures it stays behind the dish card-1 container */
+            }
+
+
+          .garlic {
+              position: absolute;
+              top: -70%;
+              right: 0%;
+              width: 120px;
+              height: 120px;
+              background-repeat: no-repeat;
+              background-size: contain;
+              opacity: 1;
+          }
+
+          .garlic-onion {
+              position: absolute;
+                margin-right: 10px; /* Fallback for older browsers */
+                top: -50%;
+                display: flex;
+              right: 0%;
+              width: 80px;
+              height: 80px;
+              background-repeat: no-repeat;
+              opacity: 1;
+          }
+
+          /* Responsive adjustments */
+          @media (max-width: 992px) {
+              .section-title {
+                  font-size: 2.5rem;
+              }
+              
+              .dish-card {
+                  margin-bottom: 2rem;
+              }
+          }
+
+          @media (max-width: 768px) {
+              .section-title {
+                  font-size: 2rem;
+              }
+              
+              .leaf {
+                  width: 150px;
+                  height: 150px;
+              }
+              
+              .leaf-left {
+                  left: -50px;
+              }
+              
+              .leaf-right {
+                  right: -50px;
+              }
+          }
+
+          @media (max-width: 576px) {
+              .section-title {
+                  font-size: 1.75rem;
+              }
+              
+              .leaf {
+                  width: 100px;
+                  height: 100px;
+              }
+              
+              .price-tag {
+                  width: 40px;
+                  height: 40px;
+                  font-size: 0.9rem;
+              }
+            }
+
+              /* Section styling */
+                .welcome-section {
+                    background-color: #f3f4f4;
+                    padding: 6rem 0;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .welcome-content{
+                margin-left: 30px;
+                margin-bottom: 50px;
+                }
+
+                /* Food image styling */
+                .main-food-image {
+                  position: relative;
+                  max-width: 90%;
+                  margin: 0 auto;
+                }
+
+                .main-food-image img {
+                  border-radius: 10px;
+                }
+
+                /*  Decorative elements */
+                .decorative-leaf {
+                  margin-top: 20px;
+                  position: absolute;
+                  width: 200px;
+                  height: 200px;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  opacity: 0.1;
+                  z-index: -1;
+              }
+
+              .top-right {
+                  top: -100px;
+                  right: 150px;
+                  opacity: 0.5;
+                  z-index: inherit;
+                  transform: translateX(-150%) rotate(15deg);
+              }
+
+              .bottom-right {
+                  bottom: -100px;
+                  right: 50px;
+                  opacity: 0.9;
+                  z-index: inherit;
+                  transform: translateX(25%) translateY(-60%) rotate(0deg);
+              }
+
+              /* Chef section styling */
+                .chef-section {
+                    background-color: #ffffff;
+                    padding: 6rem 0;
+                    position: relative;
+                }
+
+                .chef-content {
+                    margin-left: 30px;
+                    margin-bottom: 50px;
+                }
+
+                .chef-title {
+                    font-family: 'David Libre', serif;
+                    font-weight: 600;
+                    font-size: 60px;
+                    color: var(--primary-color);
+                    margin-bottom: 1rem;
+                }
+
+                .chef-description {
+                    color: #5C6574;
+                    font-size: 1rem;
+                    line-height: 26px;
+                    max-width: 600px;
+                    padding-bottom: 100px;
+                    margin-bottom: 2rem;
+                }
+
+                .chef-image-container {
+                    max-width: 70%;
+                    margin: 0 auto;
+                }
+
+                /* Decorative elements */
+                  .decorative-garlic {
+                      position: absolute;
+                      top: -100px;
+                      left: -50px;
+                      opacity: 0.9;
+                      z-index: 1;
+                      transform: rotate(0deg);
+                  }
+
+
+                /* Responsive adjustments */
+                @media (max-width: 768px) {
+                  .welcome-content {
+                      text-align: center;
+                      margin-left: 0;
+                  }
+                  
+                  .main-food-image {
+                      text-align: center;
+                  }
+              }
+
+              /* Testimonials Section */
+                .testimonials-section {
+                    position: relative;
+                    padding: 80px 0;
+                    overflow: hidden;
+                    background-color: #f8f9fa;
+                }
+
+                /* Background Image */
+                .bg-image {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 50%;
+                    height: 100%;
+                    background-position: center left;
+                    background-size: contain;
+                    opacity: 0.4;
+                    z-index: 0;
+                }
+
+                /* Section Title */
+                .section-title {
+                    font-size: 3rem;
+                    margin-bottom: 1rem;
+                    color: var(--dark-color);
+                }
+
+                /* Testimonial Card */
+                .testimonial-card {
+                    border-radius: 20px 5px;
+                    padding: 3rem 2rem 2rem;
+                    background-color: #fff;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+                    text-align: center;
+                    position: relative;
+                    margin-top: 60px;
+                    margin-bottom: 30px;
+                }
+
+                /* Testimonial Image */
+                .testimonial-image {
+                    position: absolute;
+                    top: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    border: 5px solid var(--white);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                }
+
+                .testimonial-image img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                /* Testimoial Stars */
+                .testimonial-rating {
+                    margin: 1rem 0 1.5rem;
+                    color: #eac327;
+                    font-size: 1.25rem;
+                }
+
+                .testimonial-rating i {
+                    margin: 0 1px;
+                }
+
+                /* Testimonial Text */
+                .testimonial-text {
+                    color: #5C6574;
+                    font-size: 1rem;
+                    line-height: 1.6;
+                    margin-bottom: 1.5rem;
+                }
+
+                /* Testimonial Name */
+                .testimonial-name {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.25rem;
+                    color: var(--dark-color);
+                }
+
+                /* Testimonial Position */
+                .testimonial-position {
+                    color: var(--gray-color);
+                    font-size: 0.9rem;
+                    margin-bottom: 0;
+                }
+
+                /* Carousel Indicators (Dots) */
+                .carousel-indicators {
+                    position: relative;
+                    margin-top: 2rem;
+                    margin-bottom: 0;
+                    justify-content: center;
+                }
+
+                .carousel-indicators [data-bs-target] {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: #727171;
+                    opacity: 0.2;
+                    margin: 0 5px;
+                    border: none;
+                }
+
+                .carousel-indicators .active {
+                    background-color: #F26E38;
+                    opacity: 1;
+                }
+
+                /* Responsive Adjustments */
+                @media (max-width: 992px) {
+                    .section-title {
+                        font-size: 2.5rem;
+                    }
+                    
+                    .testimonial-card {
+                        padding: 3rem 1.5rem 1.5rem;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .section-title {
+                        font-size: 2rem;
+                    }
+                    
+                    .bg-image {
+                        width: 100%;
+                        background-position: center;
+                        opacity: 0.1;
+                    }
+                    
+                    .testimonial-image {
+                        width: 80px;
+                        height: 80px;
+                        top: -40px;
+                    }
+                    
+                    .stars {
+                        font-size: 1rem;
+                    }
+                }
+
+                @media (max-width: 576px) {
+                    .testimonial-card {
+                        padding: 2.5rem 1rem 1rem;
+                        margin-top: 50px;
+                    }
+                    
+                    .testimonial-image {
+                        width: 70px;
+                        height: 70px;
+                        top: -35px;
+                    }
+                    
+                    .testimonial-text {
+                        font-size: 0.9rem;
+                    }
+                }
+
+                /* Newsletter */
+                    .newsletter {
+                        margin-top: 50px;
+                        margin-bottom: 50px;
+                        padding: 80px 20;
+                        position: relative;
+                    }
+                    
+                    .newsletter-container {
+                        background-color: var(--dark);
+                        border-radius: 20px;
+                        padding: 60px;
+                        color: white;
+                        background-image: url('/assets/img-bg.png');
+                        background-size: cover;
+                        background-position: center;
+                        position: relative;
+                    }
+                    
+                    .newsletter-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0,0,0,0.8);
+                        border-radius: 30px;
+                    }
+                    
+                    .newsletter-content {
+                        position: relative;
+                        z-index: 1;
+                        text-align: center;
+                        font-family: 'David Libre', serif;
+                    }
+                    
+                    .newsletter-content h2 {
+                        font-size: 2.2rem;
+                        margin-bottom: 30px;
+                    }
+                    
+                    .newsletter-form {
+                        max-width: 500px;
+                        margin: 0 auto;
+                    }
+                    
+                    .newsletter-form .form-control {
+                        height: 60px;
+                        border-radius: 10px;
+                        padding: 0 30px;
+                        font-size: 1rem;
+                        border: none;
+                    }
+                    
+                    .newsletter-form .btn {
+                        height: 60px;
+                        border-radius: 10px;
+                        padding: 0 30px;
+                        font-size: 1rem;
+                        background-color: var(--primary);
+                        border-color: var(--primary);
+                    }
+                    
+                    /* Footer Section */
+                    .footer-section {
+                        padding-top: 4rem;
+                        padding-bottom: 2rem;
+                        background-color: #5C6574;
+                    }
+
+                    /* Logo Styling */
+                    .logo-icon {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .circle-main {
+                        position: absolute;
+                        width: 32px;
+                        height: 32px;
+                        background-color: var(--primary-color);
+                        border-radius: 50%;
+                        bottom: 0;
+                        left: 0;
+                    }
+
+                    .circle-small {
+                        position: absolute;
+                        width: 12px;
+                        height: 12px;
+                        background-color: var(--primary-color);
+                        border-radius: 50%;
+                        top: 0;
+                        right: 0;
+                    }
+
+                    .logo-text {
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: #5C6574;
+                    }
+
+                    /* Learn More Link */
+                    .learn-more {
+                        color: var(--gray-color);
+                        text-decoration: underline;
+                        transition: color 0.3s;
+                    }
+
+                    .learn-more:hover {
+                        color: var(--primary-color);
+                    }
+
+                    /* Footer Headings */
+                    .footer-heading {
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-bottom: 1.5rem;
+                        color: #101a24;
+                        letter-spacing: 0.5px;
+                    }
+
+                    /* Footer */
+                        .footer {
+                            padding: 80px 0 30px;
+                            background-color: white;
+                        }
+                        
+                        .footer-logo {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 20px;
+                        }
+                        
+                        .footer-logo img {
+                            margin-right: 10px;
+                        }
+                        
+                        .footer-text {
+                            color: var(--gray);
+                            margin-bottom: 20px;
+                        }
+                        
+                        .footer-contact {
+                            margin-bottom: 10px;
+                        }
+                        
+                        .footer-heading {
+                            font-size: 1.2rem;
+                            margin-bottom: 25px;
+                            font-weight: 600;
+                        }
+                        
+                        .footer-links {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                        }
+                        
+                        .footer-links li {
+                            margin-bottom: 15px;
+                        }
+                        
+                        .footer-links a {
+                            color: var(--gray);
+                            text-decoration: none;
+                            transition: all 0.3s ease;
+                        }
+                        
+                        .footer-links a:hover {
+                            color: var(--primary);
+                        }
+                        
+                        .footer-social {
+                            display: flex;
+                            gap: 15px;
+                            margin-top: 20px;
+                        }
+                        
+                        .footer-social a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            background-color: #f8f9fa;
+                            color: var(--dark);
+                            transition: all 0.3s ease;
+                        }
+                        
+                        .footer-social a:hover {
+                            background-color: var(--primary);
+                            color: white;
+                        }
+                        
+                        .footer-bottom {
+                            border-top: 1px solid #eee;
+                            padding-top: 30px;
+                            margin-top: 50px;
+                        }
+                        
+                        .footer-copyright {
+                            color: var(--gray);
+                        }
+                        
+                        .footer-terms {
+                            text-align: right;
+                        }
+                        
+                        .footer-terms a {
+                            color: var(--gray);
+                            text-decoration: none;
+                            margin-left: 20px;
+                            transition: all 0.3s ease;
+                        }
+                        
+                        .footer-terms a:hover {
+                            color: var(--primary);
+                        }
+                        
+  </style>
+
+</head>
+<body>
+    
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="assets/logo 1.png" alt="Restaurant Logo" width="180">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        <a href="#" class="btn btn-primary">Book a table</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid hero-section">
+    <!-- Decorative elements -->
+    <img src="assets/leaves_vector.png" alt="" class="leaf-decoration leaf-1" aria-hidden="true">
+    <img src="assets/flower.png" alt="" class="leaf-decoration leaf-2" aria-hidden="true">
+    <img src="assets/leaf.png" alt="" class="leaf-decoration leaf-3" aria-hidden="true">
+   <!--  <img src="assets/Ellipse 4.png" alt="" class="ellipse" aria-hidden="true">   --> 
+
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left side content -->
+            <div class="col-lg-6 hero-content">
+                <h1 class="h1-head">We provide the best food for you</h1>
+                <p class="para-cont">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                
+                <div class="buttons">
+                    <a href="#" class="btn-menu">Menu</a>
+                    <a href="#" class="btn-book">Book a table</a>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <!-- Right side images -->
+            <div class="col-lg-6 image-wrapper">
+                <div class="image-container">
+                    <!-- Restaurant interior image -->
+                    <img src="assets/retaurant interior.png" 
+                         alt="Restaurant interior with warm lighting and wooden furniture" 
+                         class="restaurant-image">
+                    
+                    <!-- Food dish image -->
+                    <img src="assets/dish.png" 
+                         alt="Delicious stir-fry dish in a black bowl" 
+                         class="food-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="special-dishes py-5" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-8 text-center position-relative">
+              <!-- Decorative leaves -->
+              <div class="leaf leaf-left">
+                <img src="assets/flower.png" alt="" width="200" aria-hidden="true">
+              </div>
+              <div class="leaf leaf-right">
+                <img src="assets/leaf.png" alt="" width="130" aria-hidden="true">
+              </div>
+              
+              <h2 class="section-title mb-3">Our Special Dishes</h2>
+              <p class="section-description mb-5">
+                  Lorem ipsum dolor sit amet, consectetur<br>
+                  adipiscing elit, sed do eiusmod tempor incididunt
+              </p>
+          </div>
+      </div>
+      
+      <div class="row">
+          <!-- Dish 1: Lumpia with Sauce -->
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+              <div class="dish-card-1 text-center">
+                  <div class="dish-image-container">
+                      <img src="assets/1-dish.png" alt="Lumpia with Sauce" class="dish-image">
+                      <div class="price-tag">$12</div>
+                  </div>
+                  <h3 class="dish-title mt-4">Lumpia with Suace</h3>
+                  <p class="dish-description">
+                      Lorem ipsum dolor sit ,<br>
+                      consectetur adipiscing elit, sed<br>
+                      do eiusmod tempor
+                  </p>
+              </div>
+          </div>
+          
+          <!-- Dish 2: Fish and Veggie -->
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+              <div class="dish-card text-center">
+                  <div class="dish-image-container">
+                      <img src="assets/2-dish.png" alt="Fish and Veggie" class="dish-image">
+                      <div class="price-tag">$12</div>
+                  </div>
+                  <h3 class="dish-title mt-4">Fish and Veggie</h3>
+                  <p class="dish-description">
+                      Lorem ipsum dolor sit ,<br>
+                      consectetur adipiscing elit, sed<br>
+                      do eiusmod tempor
+                  </p>
+              </div>
+          </div>
+          
+          <!-- Dish 3: Tofu Chili -->
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+              <div class="dish-card text-center">
+                  <div class="dish-image-container">
+                      <img src="assets/3-dish.png" alt="Tofu Chili" class="dish-image">
+                      <div class="price-tag">$12</div>
+                  </div>
+                  <h3 class="dish-title mt-4">Tofu Chili</h3>
+                  <p class="dish-description">
+                      Lorem ipsum dolor sit ,<br>
+                      consectetur adipiscing elit, sed<br>
+                      do eiusmod tempor
+                  </p>
+              </div>
+          </div>
+          
+          <!-- Dish 4: Egg and Cucumber -->
+          <div class="col-md-6 col-lg-3">
+              <div class="dish-card text-center">
+                  <div class="dish-image-container">
+                      <img src="assets/4-dish.png" alt="Egg and Cucumber" class="dish-image">
+                      <div class="price-tag">$12</div>
+                  </div>
+                  <h3 class="dish-title mt-4">Egg and Cocumber</h3>
+                  <p class="dish-description">
+                      Lorem ipsum dolor sit ,<br>
+                      consectetur adipiscing elit, sed<br>
+                      do eiusmod tempor
+                  </p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Decorative elements at the bottom -->
+      <div class="decorative-elements">
+          <div class="dish-pattern">
+            <img src="assets/pattern.png" alt="" class="ptrn" aria-hidden="true">
+            <img src="assets/flower-vector.png" alt="" class="flwr" aria-hidden="true">
+          </div>
+            <div class="garlic-onion d-flex justify-content-center align-items-center ">
+              <img src="assets/onion.png" alt="" class="onion" aria-hidden="true">
+              <img src="assets/garlic.png" alt="" class="garlic-onion" aria-hidden="true">
+            </div>
+            </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="welcome-section py-5">
+  <div class="container">
+      <div class="row align-items-center ">
+          <!-- Food Image Column -->
+          <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+              <!-- Main food image -->
+              <div class="main-food-image">
+                  <img src="assets/dishwith-leaf.png" alt="Delicious stir-fry dish" class="img-fluid">
+              </div>
+          </div>
+          
+          <!-- Content Column -->
+          <div class="col-lg-6 position-relative">
+              <!-- Decorative elements -->
+              <div class="decorative-leaf top-right">
+                <img src="assets/flower.png" alt="" width="200" aria-hidden="true">
+                </div>
+              <div class="decorative-leaf bottom-right">
+                <img src="assets/flowers.png" alt="" width="450" aria-hidden="true">
+                </div>
+              
+              <!-- Welcome content -->
+              <div class="welcome-content" >
+                  <h2 class="section-title mb-4">Wecome to Our<br>Restaurant</h2>
+                  <p class="section-description mb-5">
+                      Lorem ipsum dolor sit amet, consectetur<br class="d-none d-md-block">
+                      adipiscing elit, sed do eiusmod tempor incididunt<br class="d-none d-md-block">
+                      ut labore et dolore magna aliqua.
+                  </p>
+                  <div class="d-flex flex-wrap gap-3">
+                      <a href="#menu" class="btn-menu px-4 py-2">Menu</a>
+                      <a href="#book" class="btn px-4 py-2">Book a table</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="chef-section py-5 d-flex justify-content-center align-items-center" data-aos="fade-right"
+data-aos-offset="50"
+data-aos-easing="ease-in-sine">
+  <div class="container d-flex flex-column">
+      <div class="row align-items-center d-flex">
+          <!-- Content Column -->
+          <div class="col-lg-6 mb-5 mb-lg-0 position-relative d-flex flex-column">
+              <!-- Decorative element -->
+              <div class="decorative-garlic d-flex justify-content-center">
+                <img src="assets/onion.png" alt="" width="170" aria-hidden="true">
+              </div>
+              
+              <!-- Chef content -->
+              <div class="chef-content d-flex flex-column">
+                  <h2 class="chef-title mb-4">Our Expects Chef</h2>
+                  <p class="chef-description mb-5">
+                      Lorem ipsum dolor sit amet, consectetur<br class="d-none d-md-block">
+                      adipiscing elit, sed do eiusmod tempor incididunt<br class="d-none d-md-block">
+                      ut labore et dolore magna aliqua.
+                  </p>
+                  <div class="d-flex flex-wrap gap-3">
+                      <a href="#menu" class="btn-menu px-4 py-2">Menu</a>
+                      <a href="#book" class="btn px-4 py-2">Book a table</a>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Chef Image Column -->
+          <div class="col-lg-6 text-center text-lg-end d-flex justify-content-center">
+              <div class="chef-image-container d-flex">
+                  <img src="assets/chef.png" alt="Our Expert Chef" class="img-fluid">
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section py-5">
+    <div class="container position-relative">
+        <!-- Background Image -->
+        <div class="bg-image">
+            <img src="assets/egg-dish.png" alt="" class="ellipse" aria-hidden="true">
+        </div>
+        
+        <!-- Section Header -->
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-8">
+                <h2 class="section-title">Our Happy Customers</h2>
+                <p class="text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                </p>
+            </div>
+        </div>
+        
+        <!-- Testimonial Carousel -->
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="testimonial-card">
+                      <div class="testimonial-avatar">
+                        <img src="assets/bilal.webp" alt="Customer">
+                      </div>
+                      <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                      <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <h5 class="testimonial-name">John Anderson</h5>
+                      <p class="testimonial-position">Food Critic</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="testimonial-card">
+                      <div class="testimonial-avatar">
+                        <img src="assets/lady.png" alt="Customer">
+                      </div>
+                      <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                      <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <h5 class="testimonial-name">Emma Roberts</h5>
+                      <p class="testimonial-position">Food Blogger</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="testimonial-card">
+                      <div class="testimonial-avatar">
+                        <img src="assets/hassan.webp" alt="Customer">
+                      </div>
+                      <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                      </div>
+                      <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <h5 class="testimonial-name">Michael Johnson</h5>
+                      <p class="testimonial-position">Regular Customer</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="testimonial-card">
+                      <div class="testimonial-avatar">
+                        <img src="assets/zainab-khan.webp" alt="Customer">
+                      </div>
+                      <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                      <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <h5 class="testimonial-name">Sarah Williams</h5>
+                      <p class="testimonial-position">Food Enthusiast</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="testimonial-card">
+                      <div class="testimonial-avatar">
+                        <img src="assets/man.png" alt="Customer">
+                      </div>
+                      <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                      <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <h5 class="testimonial-name">David Thompson</h5>
+                      <p class="testimonial-position">Chef</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="testimonial-card">
+                      <div class="testimonial-avatar">
+                        <img src="assets/lady.png" alt="Customer">
+                      </div>
+                      <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                      </div>
+                      <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <h5 class="testimonial-name">Jennifer Davis</h5>
+                      <p class="testimonial-position">Restaurant Owner</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+            <!-- Carousel Indicators (Dots) -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Newsletter -->
+<section class="newsletter">
+    <div class="container" style="max-width: 80%;">
+        <div class="newsletter-container" style="background-image: url('assets/img-bg.png'); ">
+            <div class="newsletter-content">
+                <h2>Get Our Promo Code by Subscribing To our Newsletter</h2>
+                <div class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Footer -->
+ <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo">
+            <img src="assets/logo 1.png" alt="Restaurant Logo" width="200">
+          </div>
+          <p class="footer-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+          <div class="footer-contact">
+            <p><i class="fas fa-phone me-2"></i> (123) 456-7890</p>
+          </div>
+          <div class="footer-contact">
+            <p><i class="fas fa-envelope me-2"></i> info@restaurant.com</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">NAVIGATION</h5>
+          <ul class="footer-links">
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Main Dishes </a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">DISHES</h5>
+          <ul class="footer-links">
+            <li><a href="#">Fish & Veggies </a></li>
+            <li><a href="#">Tofu Chillies </a></li>
+            <li><a href="#">Egg & Cucumber</a></li>
+            <li><a href="#">Lasagna w/Sauce </a></li>
+
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5 class="socials">FOLLOW US</h5>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row footer-bottom">
+        <div class="col-md-6">
+          <p class="footer-copyright">© 2023 Restaurant. All Rights Reserved. Designed by Admin</p>
+        </div>
+        <div class="col-md-6 footer-terms">
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+<!-- Bootstrap 5 JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+<!-- Custom JS for auto-sliding -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the carousel with auto-sliding
+        var testimonialCarousel = new bootstrap.Carousel(document.getElementById('testimonialCarousel'), {
+            interval: 5000, // Change slide every 5 seconds
+            wrap: true,     // Continuous loop
+            touch: true     // Enable touch swiping on mobile
+        });
+    });
+</script>
+
+<!-- Bootstrap 5 JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+</body>
+</html>
